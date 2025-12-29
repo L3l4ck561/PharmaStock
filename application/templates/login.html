@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles/style.css">
+    <link rel="stylesheet" href="../static/styles/auth.css">
+    <title>Login</title>
+    <style>
+        .container {
+            max-width: 20%;
+            min-width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>PharmaStock</h1>
+    </header>
+    <main>
+        <div class="container">
+            <h2 style="text-align: center;" class="auth">Login</h2><br>
+            <form action="" method="post">
+                <input type="text" class="auth" name="nome" placeholder="Name">
+                <input type="email" name="email" placeholder="E-mail" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" class="auth" name="confirmPassword" placeholder="Confirm password">
+                <strong style="text-align: right;" class="auth">create account <u><a id="register">log
+                            up</a></u></strong>
+                <button type="submit" class="auth">Login</button>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                {% for msg, tipo in messages %}
+                {% if tipo=='login' %}
+                <div style="color:red;text-align: center;margin-top: 10px;">{{ msg }}</div>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p>&COPY; Desenvolvido em 2025</p>
+    </footer>
+    <script src="../static/scripts/auth.js"></script>
+</body>
+
+</html>

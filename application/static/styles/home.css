@@ -1,0 +1,454 @@
+main {
+    position: relative;
+}
+
+a{
+    text-decoration: none;
+}
+
+
+.container {
+    position: absolute;
+    top: 30px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.lista {
+    flex: 1;
+    border-radius: 10px;
+    box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+}
+
+.listaDT {
+    flex: 1;
+    margin-top: 10px;
+}
+
+aside {
+    margin-top: 50px;
+    padding-top: 25px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-right: 1px solid white;
+    backdrop-filter: blur(8px);
+    transform: translateX(-110%);
+    opacity: 0;
+    display: none;
+    z-index: 80;
+}
+
+.abrir-aside {
+    display: block;
+    animation: abrirAside 1s forwards;
+}
+
+.fechar-aside {
+    animation: fecharAside 1s forwards;
+}
+
+@keyframes abrirAside {
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+        display: block;
+    }
+}
+
+@keyframes fecharAside {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+        display: block;
+    }
+
+    100% {
+        transform: translateX(-110%);
+        opacity: 0;
+        display: none;
+    }
+}
+
+.listaUl {
+    list-style: none;
+    margin: 10px;
+    overflow-y: hidden;
+
+    max-height: 60vh;
+
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+
+    padding: 10px;
+
+    max-width: 400px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+    font-family: "Inter", Arial, sans-serif;
+}
+
+.listaUl li {
+    
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px 5px;
+    border-bottom: 1px solid #f1f1f1;
+
+    font-size: 1.2rem;
+    color: #333;
+    transition: color 0.2s ease, transform 0.2s ease;
+
+    font-weight: bold;
+}
+
+.listaUl li:hover {
+    color: #4f46e5;
+    transform: translateX(4px);
+    cursor: pointer;
+}
+
+.modal-box {
+    pointer-events: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    opacity: 0;
+}
+
+.modal {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    padding: 5px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.abrir-modal {
+    display: flex;
+    animation: abrirModal 0.3s forwards;
+}
+
+.fechar-modal {
+    animation: fecharModal 0.3s forwards;
+}
+
+@keyframes abrirModal {
+    100% {
+        opacity: 1;
+        display: flex;
+    }
+}
+
+@keyframes fecharModal {
+    0% {
+        opacity: 1;
+        display: flex;
+    }
+
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+.checkbox {
+    position: fixed;
+    z-index: 90;
+    top: 65px;
+    left: 15px;
+    cursor: pointer;
+}
+
+#sair-aside {
+    margin-left: 10px;
+    height: 45px;
+    margin-top: 5px;
+}
+
+.toggle input {
+    display: none;
+}
+
+.toggle {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition-duration: .3s;
+}
+
+.toggle span {
+    width: 100%;
+    height: 4px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 5px;
+    transition-duration: .3s;
+}
+
+
+.toggle input:checked~span:nth-of-type(2) {
+    transform: translateY(14px) rotate(60deg);
+    margin-left: 0;
+    transform-origin: right;
+    transition-duration: .3s;
+    z-index: 2;
+}
+
+.toggle input:checked~span:nth-of-type(1) {
+    transform: translateY(28px) rotate(-60deg);
+    transition-duration: .3s;
+    transform-origin: left;
+    z-index: 1;
+}
+
+.toggle:has(input:checked) {
+    transform: rotate(-90deg);
+}
+
+/* From Uiverse.io by Cevorob */
+.burger {
+    width: 40px;
+    height: 30px;
+    background: transparent;
+    cursor: pointer;
+    display: block;
+}
+
+.burger input {
+    display: none;
+}
+
+.burger span {
+    display: block;
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    background: black;
+    border-radius: 5px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+
+.burger span:nth-of-type(1) {
+    top: 0px;
+    transform-origin: left center;
+}
+
+.burger span:nth-of-type(2) {
+    top: 50%;
+    transform: translateY(-50%);
+    transform-origin: left center;
+}
+
+.burger span:nth-of-type(3) {
+    top: 100%;
+    transform-origin: left center;
+    transform: translateY(-100%);
+}
+
+.burger input:checked~span:nth-of-type(1) {
+    transform: rotate(45deg);
+    top: 0px;
+    left: 5px;
+}
+
+.burger input:checked~span:nth-of-type(2) {
+    width: 0%;
+    opacity: 0;
+}
+
+.burger input:checked~span:nth-of-type(3) {
+    transform: rotate(-45deg);
+    top: 28px;
+    left: 5px;
+}
+
+/* From Uiverse.io by GhostFJ */
+.Btn {
+    display: none;
+    margin: 0 5px;
+    align-items: center;
+    justify-content: flex-start;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: 0.3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: rgb(255, 65, 65);
+}
+
+/* plus sign */
+.sign {
+    width: 100%;
+    transition-duration: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* text */
+.comment {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 0%;
+    width: 0%;
+    opacity: 0;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 600;
+    transition-duration: 0.3s;
+}
+
+/* hover effect on button width */
+.Btn:hover {
+    width: 120px;
+    border-radius: 40px;
+    transition-duration: 0.3s;
+}
+
+.Btn:hover .sign {
+    width: 50%;
+    transition-duration: 0.3s;
+    padding-left: 20px;
+}
+
+/* hover effect button's text */
+.Btn:hover .comment {
+    opacity: 1;
+    width: 50%;
+    transition-duration: 0.3s;
+    padding-right: 10px;
+}
+
+/* button click effect*/
+.Btn:active {
+    transform: translate(2px, 2px);
+}
+
+/* From Uiverse.io by arghyaBiswasDev */
+/* The switch - the box around the slider */
+.switch {
+    font-size: 17px;
+    position: relative;
+    display: inline-block;
+    width: 3.5em;
+    height: 2em;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    border: 1px solid #adb5bd;
+    transition: .4s;
+    border-radius: 30px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 1.4em;
+    width: 1.4em;
+    border-radius: 20px;
+    left: 0.27em;
+    bottom: 0.25em;
+    background-color: #adb5bd;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #007bff;
+    border: 1px solid #007bff;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #007bff;
+}
+
+input:checked+.slider:before {
+    transform: translateX(1.4em);
+    background-color: #fff;
+}
+
+.lista-horizontal {
+    display: flex;              /* Faz com que os itens fiquem na horizontal */
+    list-style-type: none;      /* Remove os pontos da lista */
+    padding: 10px 0;                 /* Remove o padding padrão */
+    margin: 0;                  /* Remove a margem padrão */
+    overflow-x: auto;           /* Habilita o scroll horizontal */
+    white-space: nowrap;        /* Evita que quebre para a linha de baixo */
+}
+
+
+/* From Uiverse.io by cssbuttons-io */
+.lista-horizontal li {
+    margin: 0 10px;
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #beffcc;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    --hover-color: #23c483;
+    --hover-shadow: rgba(46, 229, 157, 0.4);
+}
+
+.lista-horizontal li:hover {
+    background-color: var(--hover-color) !important;
+    box-shadow: 0px 15px 20px var(--hover-shadow);
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+.lista-horizontal li:active {
+    transform: translateY(-1px);
+}

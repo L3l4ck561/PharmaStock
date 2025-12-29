@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles/output.css">
+    <link rel="stylesheet" href="../static/styles/style.css">
+    <link rel="stylesheet" href="../static/styles/control.css">
+    <title>Controle de Fármacos</title>
+</head>
+
+<body>
+    <header>
+        <h1>PharmaStock</h1>
+    </header>
+    <div class="modal-box">
+        <div class="modal">
+            <h1 id="nomeP">nome</h1>
+            <!-- From Uiverse.io by Ghost-aft -->
+            <div style="display: flex; align-items: center;justify-content: center;">
+                <div style="flex: 3;">
+                    <div class="radio-input">
+                        <label>
+                            <input value="value-1" name="value-radio" id="value-1" class="valueradio" type="radio"
+                                checked />
+                            <span>Lotes</span>
+                        </label>
+                        <label>
+                            <input value="value-2" name="value-radio" id="value-2" class="valueradio" type="radio" />
+                            <span>Distribuição</span>
+                        </label>
+                        <span class="selection"></span>
+                    </div>
+                </div>
+
+                <div class="totais-card">
+                    <div class="total-item total-disponivel">
+                        <span class="total-label">Total Disponível</span>
+                        <strong id="total-disponivel">0</strong>
+                    </div>
+                    <div class="total-item total-usado">
+                        <span class="total-label">Total Usado</span>
+                        <strong id="total-usado">0</strong>
+                    </div>
+                    <div class="total-item total-restante">
+                        <span class="total-label">Total Restante</span>
+                        <strong id="total-restante">0</strong>
+                    </div>
+                    <div class="total-item total-a-distribuir">
+                        <span class="total-label">A Distribuir</span>
+                        <strong id="total-distr" style="color: #f59e0b;">0</strong>
+                        <!-- Amarelo/laranja para destaque -->
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div style="display: flex;overflow: hidden;">
+                <div class="tabela">
+                    <table id="tabela">
+                        <thead>
+                            <tr>
+                                <th>Lote</th>
+                                <th>Usado</th>
+                                <th>Disponível</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+                <div class="tabela" style="display: none;">
+                    <table id="tabela2">
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="button-group">
+                <button class="btn btn-primary" type="submit" id="processBtn">Salvar</button>
+                <button class="btn btn-danger" type="button" id="clearBtn">Cancelar</button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <main>
+        <aside>
+            <div class="card2">
+                <h3 style="margin: 10px 0 0 10px;">Resumo da saída</h3>
+                <ul class="lista-horizontal"></ul>
+            </div>
+        </aside>
+        <div class="content">
+            <div class="card-add">
+                <div class="relative w-full">
+                    <input
+                        class="w-full peer z-[21] px-6 py-4 rounded-xl outline-none duration-200 ring-2 ring-[transparent] focus:ring-[#11BE86]"
+                        color="white" id="busca" size="xl" placeholder="Adicionar novo Item"
+                        style="background-color: white;" />
+                    <p style="color:red;display: none;" id="msgerro">Fármaco não existe no sistema!</p>
+                    <div
+                        class="opacity-0 -translate-y-2 peer-focus:translate-y-0 pointer-events-none peer-focus:pointer-events-auto duration-200 peer-focus:opacity-100 absolute top-16 w-full z-[500] left-0 rounded-xl border border-white-222 p-4 bg-white shadow-lg">
+                        <p class="font-semibold text-xs text-[#5D5D5F]">Fármacos disponiveis</p>
+                        <ul class="flex gap-2 flex-col mt-2 opcao"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <br>
+                <p>Referente à semana de</p>
+                <input placeholder="Search" class="input" type="date" />
+                a
+                <input placeholder="Search" class="input" type="date" />
+                <br><br>
+                <hr><br>
+            </div>
+
+            <ul class="pedidoList"></ul>
+
+        </div>
+    </main>
+    <footer>
+        <p>&COPY; Desenvolvido em 2025</p>
+    </footer>
+    <script src="../static/scripts/control.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+-- conta criada
+
+USE saep_db;
+
+INSERT INTO users (
+nome,
+email,
+senha
+) VALUES (
+'carlos',
+'carlos@gmail.com',
+'1234'
+);
+
+SELECT * FROM users;

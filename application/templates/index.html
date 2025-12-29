@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles/style.css">
+    <link rel="stylesheet" href="../static/styles/home.css">
+    <link rel="stylesheet" href="../static/styles/register.css" type="text/css">
+    <link rel="stylesheet" href="../static/styles/auth.css" type="text/css">
+    <title>Home</title>
+</head>
+
+<body>
+    <header>
+        <h1>PharmaStock</h1>
+    </header>
+
+    <label class="checkbox burger" for="checkbox">
+        <input id="checkbox" type="checkbox">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
+    <div class="modal-box" onclick="modal()">
+        <div class="modal" onclick="event.stopPropagation()">
+            <div class="main-content">
+                <h2 style="text-align: center;">Perfil</h2><br>
+                <form action="/home" method="post">
+                    <input type="text" name="nome" value="{{user[0]}}" placeholder="Name" required>
+                    <input type="email" name="email" value="{{user[1]}}" placeholder="E-mail" required>
+                    <input type="password" name="password" placeholder="New password">
+                    <input type="password" name="confirmPassword" placeholder="Confirm password">
+                    <button type="submit">salvar</button>
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    {% for msg, tipo in messages %}
+                    {% if tipo=='loginEdit' %}
+                    <div style="color:red;text-align: center;margin-top: 10px;">{{ msg }}</div>
+                    {% elif tipo=='loginEdit2' %}
+                    <div style="color:green;text-align: center;margin-top: 10px;">{{ msg }}</div>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                </form>
+            </div>
+        </div>
+    </div>
+    <main>
+        <aside class="sidebar"><br>
+            <ul class="listaUl">
+                <li onclick="cadatroF()">Cadastrar novo lote/farmáco</li>
+                
+                <a href="/control">
+                    <li>Controle de Fármacos</li>
+                </a>
+
+                <li onclick="modal()">Configurações</li>
+                <a href="/logout">
+                    <li style="color: red;">Sair</li>
+                </a>
+            </ul>
+        </aside>
+
+        <div class="container">
+
+            <div style="display: flex;justify-content: center;">
+                <label class="switch">
+                    <input type="checkbox" id="check">
+                    <span class="slider"></span>
+                </label>
+                <img src="../static/img/danger.png" id="alertBaixa" width="30px" height="30px"
+                    style="margin-left: 5px;display: none;" alt="">
+            </div>
+
+            <div style="display: flex;flex: 3;">
+                <div class="lista">
+                    <ul class="listaItens listaUl"></ul>
+                </div>
+                <div style="flex: 4;">
+
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+
+            <div class="listaDT">
+                <ul class="lista-horizontal"></ul>
+            </div>
+
+        </div>
+
+        <form action="/register" method="post" class="formulario">
+            <div class="header-content">
+                <h1>Cadastro de Fármacos</h1>
+            </div>
+            <div class="main-content">
+                <div class="input-group">
+                    <label for="inputText">Nome do Fármaco:</label>
+                    <div class="tags"></div><br>
+
+                    <div style="display: flex; justify-content: center;align-items: center;">
+
+                        <button class="Btn" type="button">
+                            <div class="sign">
+                                <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+                                    <path
+                                        d="M603.733333 181.333333L386.133333 401.066667c-6.4 6.4-10.666667 14.933333-12.8 25.6l-51.2 211.2c-8.533333 38.4 23.466667 74.666667 61.866667 64l200.533333-53.333334c8.533333-2.133333 17.066667-6.4 23.466667-14.933333l234.666667-236.8V853.333333c0 40.533333-32 72.533333-70.4 74.666667H170.666667c-40.533333 0-74.666667-34.133333-74.666667-74.666667V256c0-40.533333 34.133333-74.666667 74.666667-74.666667h433.066666z"
+                                        fill="#ffffff"></path>
+                                    <path
+                                        d="M738.133333 147.2L435.2 448c-4.266667 4.266667-6.4 8.533333-8.533333 14.933333l-32 125.866667c-6.4 23.466667 14.933333 44.8 38.4 38.4l128-29.866667c6.4-2.133333 10.666667-4.266667 14.933333-8.533333l300.8-302.933333c38.4-38.4 38.4-102.4 0-140.8s-100.266667-38.4-138.666667 2.133333z"
+                                        fill="#ffffff"></path>
+                                </svg>
+                            </div>
+
+                            <div class="comment">
+                                Edit
+                            </div>
+                        </button>
+
+                        <input type="color" id="cor" class="none" value="#42ffff"
+                            style="width:80px;height:35px;padding: 0;border: none; margin: 0 3px;border-radius: 3px;"
+                            name="cor">
+                        <input class="inputText" placeholder="Digite nome do fármaco..." style="margin: 0;" name="nome"
+                            type="text" required />
+                        <input type="hidden" id="idPharma" name="idPharma">
+                        <input type="hidden" id="editAtivo" value="0" name="edit">
+                    </div>
+                    <span id="msgFC" style="color: green;"></span>
+
+                </div>
+
+                <div class="input-group none">
+                    <label for="action">Tipo:</label>
+                    <select id="action" name="tipo">
+                        <option value="diagnóstico">diagnóstico</option>
+                        <option value="terapêutico">terapêutico</option>
+                    </select>
+                </div>
+                <div class="input-group none">
+                    <label for="inputText">alerta de baixa no estoq. (Quantidade):</label>
+                    <input class="inputText" value="1" min="1" type="number" name="alertQuant" />
+                </div>
+                <div class="input-group">
+                    <label for="inputText">Quantidade:</label>
+                    <input class="inputText" value="5" min="1" type="number" name="quant" />
+                </div>
+
+                <div class="input-group">
+                    <label for="inputText">Lote:</label>
+                    <input onclick="document.getElementsByClassName('input-group')[1].scrollIntoView()"
+                        class="inputText" placeholder="..." name="lote" type="text" />
+                </div>
+
+                <div class="input-group">
+                    <label for="inputText">Unidade:</label>
+                    <input class="inputText" value="frascos" type="text" name="unid" />
+                </div>
+
+                <div class="input-group">
+                    <label for="inputText">Fornecedor:</label>
+                    <input class="inputText" placeholder="..." name="fornecedor" type="text" />
+                </div>
+
+                <div class="input-group">
+                    <label for="inputText">Validade:</label>
+                    <input class="inputText" type="date" name="Validade" />
+                </div>
+
+                <div class="input-group">
+                    <label for="inputText">Observações:</label>
+                    <textarea class="inputText" name="obs" placeholder="..."></textarea>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-primary" type="button" id="processBtn">Processar</button>
+                    <button class="btn btn-danger" type="button" id="clearBtn">Limpar Tudo</button>
+                </div>
+                <div class="button-group" style="display: none;">
+                    <button class="btn btn-primary" type="submit" id="processBtn2">Salvar</button>
+                    <button class="btn btn-danger" type="button" onclick="celEdit()" id="clearBtn2">Cancelar</button>
+                </div>
+
+                <div class="result-container" style="display: none;">
+                    <div class="result-title">Resultado:</div>
+                    <div id="resultError" style="color: var(--danger);"></div>
+                    <div id="result">
+                        <div class="result-header">
+                            <div style="display: flex;">
+                                <h2 class="print-result">Tecnécio-99m MDP</h2>
+                                <div style="flex: 1;text-align: end;">
+                                    <p>Quantidade: <span class="print-result">5</span></p>
+                                </div>
+                            </div>
+
+                            <sup>Lote: <span class="print-result">L2025A01</span></sup>
+                            <hr><br>
+                            <p><i><u>Tipo – <span id="actionValue">diagnóstico</span></u></i></p>
+                            <p>■ Unidade ⇒ "<span class="print-result">frasco</span>"</p>
+                            <p>■ Fornecedor ⇒ <span class="print-result">Radiopharma LTDA</span></p>
+
+                            <div class="info-box">
+                                <div class="info-title">Observações</div>
+                                <div class="info-content">
+
+                                    <p id="print-obs">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                        Incidunt, eum. Eos iure
+                                        quos ea non rerum atque quibusdam maiores debitis ad, cupiditate
+                                        quisquam.
+                                        Vitae
+                                        libero ratione assumenda omnis quidem. Possimus.</p>
+
+                                </div>
+                            </div>
+                            <div style="width: 100%; text-align: end;">
+                                <p>Validade: <span class="print-result">01/02/1000</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="copy-btn" type="submit" id="saveBtn">Salvar</button>
+                </div>
+            </div>
+            <div class="footer-content">
+                <p>Desenvolvido em 2025</p>
+            </div>
+        </form>
+
+    </main>
+    <footer>
+        <p>&COPY; Desenvolvido em 2025</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../static/scripts/index.js"></script>
+    <script src="../static/scripts/register.js"></script>
+    <script>
+        let cod = "{% with messages = get_flashed_messages() %}{% if messages %}{% for msg, tipo in messages %}{% if tipo=='loginEdit' or tipo=='loginEdit2' %}{{tipo}}{% endif %}{% endfor %}{% endif %}{% endwith %}"
+        if (cod) {
+            modal()
+            if (cod == 'loginEdit') {
+                document.getElementsByClassName('modal')[0].style.boxShadow = '0 0 15px rgba(191, 0, 0, 0.5)'
+            } else {
+                document.getElementsByClassName('modal')[0].style.boxShadow = '0 0 15px rgba(0, 191, 80, 0.5)'
+            }
+        }
+    </script>
+</body>
+
+</html>
