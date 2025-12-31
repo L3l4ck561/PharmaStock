@@ -14,9 +14,39 @@
     <header>
         <h1>PharmaStock</h1>
     </header>
+    <div class="load">
+        <div class="spinner">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="resultado">
+        <div class="toggler">
+            <input id="toggler-1" name="toggler-1" type="checkbox" value="1">
+            <label for="toggler-1">
+                <svg class="toggler-on" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                    <polyline class="path check" points="100.2,40.2 51.5,88.8 29.8,67.5"></polyline>
+                </svg>
+                <svg class="toggler-off" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                    <line class="path line" x1="34.4" y1="34.4" x2="95.8" y2="95.8"></line>
+                    <line class="path line" x1="95.8" y1="34.4" x2="34.4" y2="95.8"></line>
+                </svg>
+            </label>
+        </div>
+    </div>
     <div class="modal-box">
         <div class="modal">
-            <h1 id="nomeP">nome</h1>
+            <div style="display: flex;align-items: center;">
+                <h1 id="nomeP" style="flex: 3;">nome</h1>
+                <button class="noselect"><span class="text">Delete</span><span class="icon"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path
+                                d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z">
+                            </path>
+                        </svg></span></button>
+            </div>
+
             <!-- From Uiverse.io by Ghost-aft -->
             <div style="display: flex; align-items: center;justify-content: center;">
                 <div style="flex: 3;">
@@ -83,46 +113,122 @@
     </div>
     </div>
     <main>
-        <aside>
-            <div class="card2">
-                <h3 style="margin: 10px 0 0 10px;">Resumo da saída</h3>
-                <ul class="lista-horizontal"></ul>
-            </div>
-        </aside>
-        <div class="content">
-            <div class="card-add">
-                <div class="relative w-full">
-                    <input
-                        class="w-full peer z-[21] px-6 py-4 rounded-xl outline-none duration-200 ring-2 ring-[transparent] focus:ring-[#11BE86]"
-                        color="white" id="busca" size="xl" placeholder="Adicionar novo Item"
-                        style="background-color: white;" />
-                    <p style="color:red;display: none;" id="msgerro">Fármaco não existe no sistema!</p>
-                    <div
-                        class="opacity-0 -translate-y-2 peer-focus:translate-y-0 pointer-events-none peer-focus:pointer-events-auto duration-200 peer-focus:opacity-100 absolute top-16 w-full z-[500] left-0 rounded-xl border border-white-222 p-4 bg-white shadow-lg">
-                        <p class="font-semibold text-xs text-[#5D5D5F]">Fármacos disponiveis</p>
-                        <ul class="flex gap-2 flex-col mt-2 opcao"></ul>
-                    </div>
+        <div class="card-add">
+            <div class="relative w-full">
+                <input
+                    class="w-full peer z-[21] px-6 py-4 rounded-xl outline-none duration-200 ring-2 ring-[transparent] focus:ring-[#11BE86]"
+                    color="white" id="busca" size="xl" placeholder="Adicionar novo Item"
+                    style="background-color: white;" />
+                <p style="color:red;display: none; margin: 2px 10px;" id="msgerro">Fármaco não existe no sistema!</p>
+                <div
+                    class="opacity-0 -translate-y-2 peer-focus:translate-y-0 pointer-events-none peer-focus:pointer-events-auto duration-200 peer-focus:opacity-100 absolute top-16 w-full z-[500] left-0 rounded-xl border border-white-222 p-4 bg-white shadow-lg">
+                    <p class="font-semibold text-xs text-[#5D5D5F]">Fármacos disponiveis</p>
+                    <ul class="flex gap-2 flex-col mt-2 opcao"></ul>
                 </div>
             </div>
+        </div>
 
-            <div>
-                <br>
-                <p>Referente à semana de</p>
-                <input placeholder="Search" class="input" type="date" />
-                a
-                <input placeholder="Search" class="input" type="date" />
-                <br><br>
-                <hr><br>
+        <ul class="pedidoList"></ul>
+
+        <form action="/control" method="post" id="enviarP" class="find">
+            <div style="position: absolute;left: 0;padding: 0 20px;display: flex;">
+                <input id="inpLock" type="checkbox" name="inpLock" checked>
+                <label class="btn-lock" for="inpLock">
+                    <svg width="36" height="40" viewBox="0 0 36 40">
+                        <path class="lockb"
+                            d="M27 27C27 34.1797 21.1797 40 14 40C6.8203 40 1 34.1797 1 27C1 19.8203 6.8203 14 14 14C21.1797 14 27 19.8203 27 27ZM15.6298 26.5191C16.4544 25.9845 17 25.056 17 24C17 22.3431 15.6569 21 14 21C12.3431 21 11 22.3431 11 24C11 25.056 11.5456 25.9845 12.3702 26.5191L11 32H17L15.6298 26.5191Z">
+                        </path>
+                        <path class="lock" d="M6 21V10C6 5.58172 9.58172 2 14 2V2C18.4183 2 22 5.58172 22 10V21"></path>
+                        <path class="bling" d="M29 20L31 22"></path>
+                        <path class="bling" d="M31.5 15H34.5"></path>
+                        <path class="bling" d="M29 10L31 8"></path>
+                    </svg>
+                </label>
             </div>
 
-            <ul class="pedidoList"></ul>
+            <input type="hidden" name="dados" id="dados">
+            <div style="display: flex;align-items: center;justify-content: center;flex: 3;">
 
-        </div>
+                <div class="form-container">
+                    <p>Selecionar período</p>
+
+                    <div class="field">
+                        <label for="inputAno" class="label">Ano</label>
+                        <input type="number" id="inputAno" min="1900" max="2100" />
+                    </div>
+
+                    <div class="field">
+                        <!-- <label class="label" for="selectMes">Mês</label> -->
+                        <select id="selectMes">
+                            <option value="">Selecione o mês</option>
+                            <option value="1">Janeiro</option>
+                            <option value="2">Fevereiro</option>
+                            <option value="3">Março</option>
+                            <option value="4">Abril</option>
+                            <option value="5">Maio</option>
+                            <option value="6">Junho</option>
+                            <option value="7">Julho</option>
+                            <option value="8">Agosto</option>
+                            <option value="9">Setembro</option>
+                            <option value="10">Outubro</option>
+                            <option value="11">Novembro</option>
+                            <option value="12">Dezembro</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <!-- <label class="label" for="selectSemana">Semana</label> -->
+                        <select id="selectSemana" name="opsemana" disabled>
+                            <option value="">Selecione a semana</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <p style="margin-right: 10px;" class="semana">Referente à semana de</p>
+
+                <input class="input semana" type="date" id="dataInicio" name="diainio" readonly/>
+
+                <p style="margin: 10px;" class="semana">a</p>
+
+                <input class="input semana" type="date" id="dataFim" name="diafinal" readonly/>
+
+            </div>
+            <div style="position: absolute;right: 0;padding: 0 20px;display: flex;">
+                <button class="button" type="button" onclick="limparLocalStorage()">
+                    <svg viewBox="0 0 448 512" class="svgIcon">
+                        <path
+                            d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
+                        </path>
+                    </svg>
+                </button>
+                <button class="cssbuttons-io-button" type="submit">
+                    Salvar
+                    <div class="icon">
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            stroke-linejoin="round" stroke-linecap="round" stroke-width="2" viewBox="0 0 24 24"
+                            stroke="currentColor" fill="none">
+                            <path d="m19,21H5c-1.1,0-2-.9-2-2V5c0-1.1.9-2,2-2h11l5,5v11c0,1.1-.9,2-2,2Z"
+                                stroke-linejoin="round" stroke-linecap="round" data-path="box"></path>
+                            <path d="M7 3L7 8L15 8" stroke-linejoin="round" stroke-linecap="round" data-path="line-top">
+                            </path>
+                            <path d="M17 20L17 13L7 13L7 20" stroke-linejoin="round" stroke-linecap="round"
+                                data-path="line-bottom"></path>
+                        </svg>
+                    </div>
+                </button>
+
+            </div>
+        </form>
     </main>
     <footer>
         <p>&COPY; Desenvolvido em 2025</p>
     </footer>
+    <script>
+        let msgError = `{% with messages = get_flashed_messages() %}{% if messages %}{% for msg, tipo in messages %}{% if tipo=='msgError' %}{{msg}}{% endif %}{% endfor %}{% endif %}{% endwith %}`
+    </script>
     <script src="../static/scripts/control.js"></script>
+    <script src="../static/scripts/scripts.js"></script>
 </body>
 
 </html>

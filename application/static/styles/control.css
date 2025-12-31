@@ -13,7 +13,8 @@ h2 {
 
 main {
   padding: 0;
-  flex-direction: row;
+  margin-top: 60px;
+  flex-direction: column;
   justify-content: flex-start;
   overflow-y: hidden;
 }
@@ -47,9 +48,11 @@ main {
 .animar3 {
   animation: entrarTela3 0.5s ease-out forwards;
 }
+
 .animar4 {
   animation: entrarTela4 0.5s ease-out forwards;
 }
+
 @keyframes entrarTela3 {
   from {
     opacity: 0;
@@ -59,6 +62,7 @@ main {
     opacity: 1;
   }
 }
+
 @keyframes entrarTela4 {
   from {
     opacity: 1;
@@ -69,12 +73,15 @@ main {
     display: none;
   }
 }
+
 .animar5 {
   animation: entrarTela5 0.5s ease-out forwards;
 }
+
 .animar6 {
   animation: entrarTela6 0.5s ease-out forwards;
 }
+
 @keyframes entrarTela5 {
   0% {
     transform: translateY(5%);
@@ -86,6 +93,7 @@ main {
     opacity: 1;
   }
 }
+
 @keyframes entrarTela6 {
   from {
     transform: translateY(0);
@@ -96,40 +104,6 @@ main {
     transform: translateY(5%);
     opacity: 0;
   }
-}
-
-.content {
-  flex: 3;
-  display: flex;
-  flex-direction: column;
-  height: 85vh;
-  align-items: center;
-  justify-content: center;
-}
-
-aside {
-  width: 350px;
-  height: 91vh;
-  margin-top: 50px;
-  background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
-  transition: all .3s;
-  display: flex;
-  flex-direction: row-reverse;
-}
-
-.card2 {
-  width: 350px;
-  height: 91vh;
-  background-color: #f5f5f5;
-  transition: all .2s;
-}
-
-.card2:hover {
-  border-radius: 0 20px 20px 0;
-}
-
-aside:hover {
-  box-shadow: 0px 0px 10px 1px rgba(0, 255, 117, 0.30);
 }
 
 /* From Uiverse.io by pandey_saurav_ */
@@ -194,13 +168,11 @@ aside:hover {
   display: grid;
   grid-template-columns: 60px 1fr 80px 1fr;
   gap: 10px;
-
 }
 
 .corP {
   width: 100%;
   height: 100%;
-  background-color: #0550ED;
   border-radius: 5px;
 }
 
@@ -221,7 +193,7 @@ aside:hover {
 .cart .quantity {
   height: 30px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   margin: auto;
   background-color: #ffffff;
   border: 1px solid #e5e5e5;
@@ -390,12 +362,15 @@ aside:hover {
 
 /* From Uiverse.io by adamgiebl */
 .card-add {
+  padding: 0 3px;
+  margin-bottom: 5px;
   width: 100%;
   max-width: 70%;
-  padding: 2px;
+  padding-top: 3px;
+  height: 90px;
   border-radius: 10px;
-  /* background: rgb(236, 236, 236);
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; */
+  background: rgb(236, 236, 236);
+  /* box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; */
 
 }
 
@@ -436,15 +411,16 @@ aside:hover {
 }
 
 .pedidoList {
-  width: 80vw;
+  box-shadow: inset 0 -5px 15px rgba(3, 255, 213, 0.2);
+  flex: 3;
+  width: 100%;
   height: 100%;
   display: flex;
   list-style-type: none;
-  padding: 10px 0;
+  padding: 40px 30px;
   margin: 0;
   overflow-x: auto;
   white-space: nowrap;
-  padding: 10px;
 }
 
 .pedidoList li {
@@ -520,7 +496,7 @@ aside:hover {
 }
 
 .animar {
-  animation: entrarTela 0.8s ease-out forwards;
+  animation: entrarTela 0.6s ease-out forwards;
 }
 
 @keyframes entrarTela {
@@ -607,7 +583,8 @@ td:first-child {
   margin-bottom: 10px;
 }
 
-.numero, .numero2 {
+.numero,
+.numero2 {
   width: 80px;
   padding: 5px;
   font-size: 1.25rem;
@@ -624,6 +601,7 @@ td:first-child {
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
 }
+
 .numero2:focus {
   outline: none;
   border-color: var(--primary);
@@ -707,7 +685,8 @@ button {
     height: 50px;
   }
 
-  .numero, .numero2 {
+  .numero,
+  .numero2 {
     width: 100px;
   }
 }
@@ -757,37 +736,447 @@ button {
 }
 
 .button-group {
-    display: flex;
-    gap: 15px;
-    margin: 25px 0;
+  display: flex;
+  gap: 15px;
+  margin: 25px 0;
 }
+
 .btn {
-    flex: 1;
-    padding: 14px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  flex: 1;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .btn-primary {
-    background-color: green;
-    color: white;
-    display: none;
+  background-color: green;
+  color: white;
+  display: none;
 }
 
 .btn-danger {
-    background-color: red;
-    color: white;
+  background-color: red;
+  color: white;
 }
 
 .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .btn:active {
-    transform: translateY(0);
+  transform: translateY(0);
 }
+
+/* From Uiverse.io by GhostFJ */
+.Btn {
+  margin: 0 5px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition-duration: 0.3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background-color: rgb(255, 65, 65);
+}
+
+/* plus sign */
+.sign {
+  width: 100%;
+  transition-duration: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* text */
+.comment {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 0%;
+  width: 0%;
+  opacity: 0;
+  color: white;
+  font-size: 0.75em;
+  font-weight: 600;
+  transition-duration: 0.3s;
+}
+
+/* hover effect on button width */
+.Btn:hover {
+  width: 90px;
+  border-radius: 10px;
+  transition-duration: 0.3s;
+}
+
+.Btn:hover .sign {
+  width: 50%;
+  transition-duration: 0.3s;
+  padding-left: 10px;
+}
+
+/* hover effect button's text */
+.Btn:hover .comment {
+  opacity: 1;
+  width: 50%;
+  transition-duration: 0.3s;
+  padding-right: 10px;
+}
+
+/* button click effect*/
+.Btn:active {
+  transform: translate(2px, 2px);
+}
+
+.find {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+}
+
+/* From Uiverse.io by adamgiebl */
+.cssbuttons-io-button {
+  width: 150px;
+  background: #70f08c;
+  color: #555;
+  font-family: inherit;
+  padding: 0.35em;
+  padding-left: 1.2em;
+  font-size: 17px;
+  font-weight: 600;
+  border-radius: 0.9em;
+  border: none;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 0 1.6em -0.6em #4da672;
+  overflow: hidden;
+  position: relative;
+  height: 2.8em;
+  padding-right: 3.3em;
+  cursor: pointer;
+}
+
+.cssbuttons-io-button .icon {
+  background: white;
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 0.7em;
+  box-shadow: 0.1em 0.1em 0.6em 0.2em #52b989;
+  right: 0.3em;
+  transition: all 0.3s;
+}
+
+.cssbuttons-io-button:hover .icon {
+  width: calc(100% - 0.6em);
+}
+
+.cssbuttons-io-button .icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #5ab952;
+}
+
+.cssbuttons-io-button:hover .icon svg {
+  transform: translateX(0.1em);
+}
+
+.cssbuttons-io-button:active .icon {
+  transform: scale(0.95);
+}
+
+/* From Uiverse.io by vinodjangid07 */
+.button {
+  margin-right: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(20, 20, 20);
+  border: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+  cursor: pointer;
+  transition-duration: .3s;
+  overflow: hidden;
+  position: relative;
+}
+
+.svgIcon {
+  width: 12px;
+  transition-duration: .3s;
+}
+
+.svgIcon path {
+  fill: white;
+}
+
+.button:hover {
+  width: 140px;
+  border-radius: 50px;
+  transition-duration: .3s;
+  background-color: rgb(255, 69, 69);
+  align-items: center;
+}
+
+.button:hover .svgIcon {
+  width: 50px;
+  transition-duration: .3s;
+  transform: translateY(60%);
+}
+
+.button::before {
+  position: absolute;
+  top: -20px;
+  content: "Delete All";
+  color: white;
+  transition-duration: .3s;
+  font-size: 2px;
+}
+
+.button:hover::before {
+  font-size: 13px;
+  opacity: 1;
+  transform: translateY(30px);
+  transition-duration: .3s;
+}
+
+/* From Uiverse.io by cssbuttons-io */
+.noselect {
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+  background: #3b2828;
+  display: none;
+}
+
+.noselect,
+.noselect span {
+  transition: 200ms;
+}
+
+.noselect .text {
+  transform: translateX(-20px);
+  color: white;
+  font-weight: bold;
+}
+
+.noselect .icon {
+  position: absolute;
+  border-left: 1px solid #c41b1b;
+  transform: translateX(50px);
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.noselect svg {
+  width: 15px;
+  fill: #eee;
+}
+
+.noselect:hover {
+  background: #ff3636;
+}
+
+.noselect:hover .text {
+  color: transparent;
+}
+
+.noselect:hover .icon {
+  width: 150px;
+  border-left: none;
+  transform: translateX(0);
+}
+
+.noselect:focus {
+  outline: none;
+}
+
+.noselect:active .icon svg {
+  transform: scale(0.8);
+}
+
+/* From Uiverse.io by mobinkakei */ 
+.btn-lock {
+  display: inline-block;
+  background: #ff5b5b;
+  width: 40px;
+  height: 40px;
+  box-sizing: border-box;
+  padding: 5px 0 0 7.5px;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-lock svg {
+  fill: none;
+  width: 30px;
+  height: 30px;
+  transform: translate3d(0, 0, 0);
+}
+
+.btn-lock svg .bling {
+  stroke: #fff;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 3;
+  stroke-dashoffset: 15;
+  transition: all 0.3s ease;
+}
+
+.btn-lock svg .lock {
+  stroke: #fff;
+  stroke-width: 4;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke-dasharray: 36;
+  transition: all 0.4s ease;
+}
+
+.btn-lock svg .lockb {
+  fill: #fff;
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  transform: rotate(8deg);
+  transform-origin: 14px 20px;
+  transition: all 0.2s ease;
+}
+
+#inpLock {
+  display: none;
+}
+
+#inpLock:checked + label {
+  background: #20cca5;
+}
+
+#inpLock:checked + label svg {
+  opacity: 1;
+}
+
+#inpLock:checked + label svg .bling {
+  animation: bling6132 0.3s linear forwards;
+  animation-delay: 0.2s;
+}
+
+#inpLock:checked + label svg .lock {
+  stroke-dasharray: 48;
+  animation: locked 0.3s linear forwards;
+}
+
+#inpLock:checked + label svg .lockb {
+  transform: rotate(0);
+  transform-origin: 14px 22px;
+}
+
+@keyframes bling6132 {
+  50% {
+    stroke-dasharray: 3;
+    stroke-dashoffset: 12;
+  }
+
+  100% {
+    stroke-dasharray: 3;
+    stroke-dashoffset: 9;
+  }
+}
+
+@keyframes locked {
+  50% {
+    transform: translateY(1px);
+  }
+}
+
+.form-container {
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-container p {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.field {
+  display: flex;
+  margin-left: 18px;
+  align-items: center;
+  justify-content: center;
+}
+
+.label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-right: 6px;
+  color: #374151;
+  
+}
+
+#inputAno,
+select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  background-color: #fff;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+#inputAno:focus,
+select:focus {
+  outline: none;
+  border-color: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34,197,94,0.2);
+}
+
+select {
+  appearance: none;
+  cursor: pointer;
+}
+
+select:disabled {
+  background-color: #f3f4f6;
+  cursor: not-allowed;
+  color: #9ca3af;
+}
+
+/* seta custom do select */
+.field {
+  position: relative;
+}
+
+.field select {
+  padding-right: 36px;
+}
+
+

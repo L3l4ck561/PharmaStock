@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, make_respo
 import resources.database_connection as database_connection
 from functools import wraps
 from werkzeug.security import generate_password_hash, check_password_hash
+import ast,json
 
 # Carrega a função para consulta do banco de dados 
 conectBD = database_connection.consultaBD
@@ -125,6 +126,22 @@ def register():
 def control():
     user = session['usuario']
     if request.method == "POST":
+        dados = request.form['dados']
+        lista = lista = ast.literal_eval(dados)
+
+        lista = [{"id_pharma":1,"lote":[[[1,"sdsiur"],1],[[2,"papo"],0],[[4,"l0002"],0],[[6,"papo"],0]],"semana":[1,0],"data":"30/12/2025, 20:14:19"}]
+
+        estado = request.form.get('inpLock')
+        if estado:
+            print(1)
+
+
+        # conectBD('INSERT INTO control (id_pharma,quant,lote,unid,fornecedor,validade,obs) VALUES (%s,%s,%s,%s,%s,%s,%s);',0,valor)
+
+        #json.dumps(lista) salvando lista no banco
+        #lista = json.loads(row["valores"]) lendo a lista do banco
+
+        flash([1,'msgError']) #dar isso somente se der certo ao enviar ao banco
         return redirect(url_for("control"))
 
     return render_template("control.html",user=user)
