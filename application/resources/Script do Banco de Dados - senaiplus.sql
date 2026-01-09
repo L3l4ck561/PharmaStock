@@ -31,11 +31,12 @@ CREATE TABLE if NOT EXISTS stock (
     lote VARCHAR(100),
     unid VARCHAR(50),
     fornecedor VARCHAR(150),
+    recebido DATE,
     validade DATE,
     obs TEXT,
     
     usados INT DEFAULT 0,
-    vencidos INT DEFAULT 0,
+    prazo TINYINT(1) DEFAULT 0,
     
     ativo TINYINT(1) DEFAULT 1,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -44,3 +45,37 @@ CREATE TABLE if NOT EXISTS stock (
         FOREIGN KEY (id_pharma) REFERENCES pharma(id)
 );
 
+DROP TABLE if EXISTS control;
+CREATE TABLE if NOT EXISTS control (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    
+    dia JSON,
+    seg DATE,
+    sex DATE,
+    
+    id_pharma INT NOT NULL,
+	 
+	 totalDisponivel INT NOT NULL,
+	 totalPrazo INT NOT NULL,
+	 totalRecebidos INT NOT NULL,
+	 totalUsados INT NOT NULL,
+	 
+    ativo TINYINT(1) DEFAULT 1,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_control_pharma
+        FOREIGN KEY (id_pharma) REFERENCES pharma(id)
+);
+
+DROP TABLE if EXISTS saida;
+CREATE TABLE if NOT EXISTS saida (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    
+    id_stock INT NOT NULL,
+	 usados INT DEFAULT 0,
+	 criado DATE,
+	 semana DATE, -- usa a sexta como referencia
+	 
+    ativo TINYINT(1) DEFAULT 1,
+    CONSTRAINT fk_saida_stock
+        FOREIGN KEY (id_stock) REFERENCES stock(id)
+);

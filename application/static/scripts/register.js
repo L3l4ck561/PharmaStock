@@ -14,17 +14,20 @@ const actionValue = document.getElementById('actionValue')
 const infoBox = document.getElementsByClassName('info-box')[0]
 const obs = document.getElementById('print-obs')
 
+
+inputText[7].value = new Date().toISOString().split('T')[0]
+
 // Processa o texto quando o botão é clicado
 processBtn.addEventListener('click', () => {
     resultContainer.style.display = 'block'
     document.getElementsByClassName('result-container')[0].scrollIntoView()
     let vetor = []
     inputText.forEach((e, i) => {
-        if (!e.value.trim() && i != 7) {
+        if (!e.value.trim() && i != 8) {
             vetor.push(i)
         }
     })
-    let input = ["Nome do Fármaco", "Quantidade", "Lote", "Unidade", "Fornecedor", "Validade"]
+    let input = ["Nome do Fármaco","Tipo", "Quantidade", "Lote", "Unidade", "Fornecedor", "Validade","Recebido"]
     if (vetor.length) {
         let vazio = vetor.map(i => { return input[i] })
         resultDivError.textContent = `Por favor, preencha os campos corretamente: ${vazio}.`;
@@ -40,7 +43,7 @@ processBtn.addEventListener('click', () => {
         item.innerHTML = inputText[i].value
     })
     actionValue.innerHTML = actionSelect.value
-    if (inputText[7].value.trim()) {
+    if (inputText[8].value.trim()) {
         infoBox.style.display = 'block'
         obs.innerHTML = inputText[7].value
     } else {

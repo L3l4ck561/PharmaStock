@@ -14,6 +14,13 @@
 <body>
     <header>
         <h1>PharmaStock</h1>
+        <nav>
+            <ul>
+                <li><a href="/home" class="active">Início</a></li>
+                <li><a href="/control">Controle de Fármacos</a></li>
+                <li><a href="/relatorio">Relatório</a></li>
+            </ul>
+        </nav>
     </header>
 
     <label class="checkbox burger" for="checkbox">
@@ -52,11 +59,6 @@
         <aside class="sidebar"><br>
             <ul class="listaUl">
                 <li onclick="cadatroF()">Cadastrar novo lote/farmáco</li>
-                
-                <a href="/control">
-                    <li>Controle de Fármacos</li>
-                </a>
-
                 <li onclick="modal()">Configurações</li>
                 <a href="/logout">
                     <li style="color: red;">Sair</li>
@@ -168,7 +170,10 @@
                     <label for="inputText">Validade:</label>
                     <input class="inputText" type="date" name="Validade" />
                 </div>
-
+                <div class="input-group">
+                    <label for="inputText">Recebido:</label>
+                    <input class="inputText" type="date" name="recebido" />
+                </div>
                 <div class="input-group">
                     <label for="inputText">Observações:</label>
                     <textarea class="inputText" name="obs" placeholder="..."></textarea>

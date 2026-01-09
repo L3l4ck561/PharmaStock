@@ -688,7 +688,7 @@ function gerarSemanas(mes, ano) {
         if (sexta.getMonth() !== mes - 1) break;
 
         const option = document.createElement("option");
-        option.value = [formatar(segunda), formatar(sexta)];
+        option.value = `${formatar(segunda)}, ${formatar(sexta)}`;
         option.textContent = `${formatar(segunda)} a ${formatar(sexta)}`;
 
         selectSemana.appendChild(option);

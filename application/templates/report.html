@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles/style.css">
+    <link rel="stylesheet" href="../static/styles/report.css">
+    <title>Relatório</title>
+</head>
+
+<body>
+    <header>
+        <h1>PharmaStock</h1>
+        <nav>
+            <ul>
+                <li><a href="/home">Início</a></li>
+                <li><a href="/control">Controle de Fármacos</a></li>
+                <li><a href="/relatorio" class="active">Relatório</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <aside>
+            <h2 style="margin: 10px 20px;">Registros</h2>
+            <div class="opcao">
+                <ul class="lista">
+                    <li onclick="bilder(0)">Fármacos</li>
+                    <li onclick="bilder(2)">Vencidos</li>
+                    <li onclick="bilder(3)">Histórico</li>
+                </ul>
+            </div>
+            <div class="opcao">
+                <div class="title">
+                    <h3 style="flex:3">Relatório semanal</h3>
+                    <label class="container2">
+                        <input class="chec" type="checkbox" checked>
+                        <div class="line"></div>
+                        <div class="line line-indicator"></div>
+                    </label>
+                </div>
+                <div class="content" style="height: 450px;overflow-y: auto;">
+                    <ul class="lista">
+                        {% for e in semanas %}
+                        <li onclick="semanal('{{e[1]}}','{{e[2]}}',{{e[0]}})">{{e[1]}} <b>a</b> {{e[2]}}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <!-- <div class="opcao">
+                <div class="title">
+                    <h3 style="flex:3">lista1</h3>
+                    <label class="container2">
+                        <input class="chec" type="checkbox">
+                        <div class="line"></div>
+                        <div class="line line-indicator"></div>
+                    </label>
+                </div>
+                <div class="content">
+
+                </div>
+
+            </div> -->
+        </aside>
+        <div style="position: relative;flex: 3;">
+            <div class="box">
+                <div class="container" style="display: flex;">
+                    <div style="height: 82vh;"></div>
+                    <div style="text-align: center;flex: 3;">
+                        <h1 class="titulo-pagina">Lista de Fármacos em Estoque</h1>
+
+                        <div class="lista-farmacos">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div style="height: 82vh;"></div>
+                    <div style="text-align: center;flex: 3;padding: 20px 0;">
+                        <h1>Controle de Fármacos</h1>
+                        <strong>Referente à semana de <span id="seg"></span> a <span id="sex"></span></strong>
+
+                        <table id="tabela">
+                            <thead>
+                                <tr>
+                                    <th>Fármaco</th>
+                                    <th>Disponível</th>
+                                    <th>Recebidos</th>
+                                    <th>Vencidos</th>
+                                    <th>Usados</th>
+                                    <th>Total</th> <!-- Corrigi "Todal" para "Total" -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- linhas criadas pelo JS -->
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+                <div class="container">
+                    <div style="height: 82vh;"></div>
+                    <div style="text-align: center;flex: 3;">
+                        <h1 class="titulo-pagina">Lista de Fármacos para Descarte</h1>
+
+                        <div class="lista-farmacos">
+                            <!-- Exemplo de um fármaco com múltiplos lotes -->
+                            <div class="farmaco-card">
+                                <h3 class="nome-farmaco">Fitato <span class="quantidade estoque-alto">5 / 25 unid.</span></h3>
+                                <div class="lotes">
+                                    <div class="lote-item">
+                                        <span class="lote-numero">L001</span>
+                                        <span class="validade">Validade: 08/07/2026</span>
+                                        <span class="quantidade estoque-alto">5 / 25 unid.</span>
+                                    </div>
+                                    <div class="lote-item vencimento-proximo">
+                                        <span class="lote-numero">L002</span>
+                                        <span class="validade">Validade: 15/01/2026</span>
+                                        <span class="quantidade estoque-baixo">2 / 20 unid.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Outro fármaco -->
+                            <div class="farmaco-card">
+                                <h3 class="nome-farmaco">FDG (Flúor-18)</h3>
+                                <div class="lotes">
+                                    <div class="lote-item vencido">
+                                        <span class="lote-numero">L003</span>
+                                        <span class="validade">Validade: 20/12/2025</span>
+                                        <span class="quantidade estoque-critico">0 / 15 unid.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div style="height: 82vh;"></div>
+                    <div style="text-align: center;flex: 3;">
+                        <h1 class="titulo-pagina">Ações Realizadas no Sistema</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <footer>
+        <p>&COPY; Desenvolvido em 2025</p>
+    </footer>
+    <script>
+        const bdControl = JSON.parse({{ control | tojson}})
+        const bdStock = JSON.parse({{ stock | tojson}})
+        const bdPharma = JSON.parse({{ pharma | tojson}})
+    </script>
+    <script src="../static/scripts/report.js"></script>
+</body>
+
+</html>

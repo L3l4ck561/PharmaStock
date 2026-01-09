@@ -1,0 +1,344 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  max-height: 90vh;
+}
+
+main {
+  all: unset;
+  flex: 3;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+}
+
+aside {
+  max-height: 100%;
+  padding: 20px;
+  /* background-color: rgb(197, 255, 231); */
+}
+
+.box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow-y: auto;
+  flex-direction: column;
+  padding: 20px 0;
+}
+
+.container {
+  all: unset;
+  width: 95%;
+  padding: 10px;
+  margin: auto;
+  border-radius: 20px;
+  border: 2px dashed #555;
+  display: none;
+}
+
+.opcao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #aaa;
+}
+
+ul {
+  list-style: none;
+}
+
+ul.lista {
+  padding: 0;
+  margin: 0;
+}
+
+ul.lista li {
+  padding: 20px 20px;
+  width: 450px;
+  font-family: Arial, sans-serif;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+ul.lista li:hover {
+  background-color: #e0e0e0;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 70PX;
+  transition: 0.3s;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.title:hover {
+  background-color: #eeF;
+}
+
+.content {
+  width: 100%;
+  height: 0;
+  transition: 0.5s;
+  overflow-y: hidden;
+}
+
+/* From Uiverse.io by AbanoubMagdy1 */
+/* Hide the default checkbox */
+.container2 input {
+  opacity: 0;
+  cursor: pointer;
+  width: 0;
+  height: 0;
+}
+
+.container2 {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 20px;
+  user-select: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 3px;
+  background: rgba(216, 216, 216, 0.603);
+}
+
+.container2:hover {
+  background: rgba(197, 197, 197, 0.527);
+}
+
+.line {
+  width: calc(100% - 8px);
+  height: 3px;
+  left: 4px;
+  background: rgb(58, 58, 58);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: .7s transform cubic-bezier(0, 1, .33, 1.2), background .4s;
+}
+
+.line-indicator {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.container2 input:checked~.line-indicator {
+  transform: translateY(-50%);
+}
+
+/* Estilo geral da tabela */
+#tabela {
+  margin: 30px 0;
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Cabeçalho da tabela */
+#tabela thead {
+  background-color: #1ee5ca;
+  /* Azul moderno, comum em ambientes médicos */
+  color: #333;
+}
+
+#tabela thead th {
+  padding: 16px 12px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.1em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Corpo da tabela */
+#tabela tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+#tabela tbody tr:nth-child(even) {
+  background-color: #f8fbff;
+}
+
+#tabela tbody tr:hover {
+  background-color: #e3f2fd;
+  cursor: pointer;
+}
+
+/* Células do corpo */
+#tabela tbody td {
+  padding: 14px 12px;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 1em;
+}
+
+/* Destaque para valores importantes (opcional, adicione classes via JS) */
+.disponivel-baixo {
+  background-color: #ffebee !important;
+  color: #c62828;
+  font-weight: bold;
+}
+
+.vencido {
+  background-color: #ffebee;
+  color: #d32f2f;
+  font-weight: bold;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  #tabela-container {
+    padding: 10px;
+  }
+
+  #tabela thead th,
+  #tabela tbody td {
+    padding: 10px 8px;
+    font-size: 0.95em;
+  }
+}
+
+.titulo-pagina {
+  text-align: center;
+  color: #1e88e5;
+  margin: 40px 0 30px;
+  font-size: 2em;
+  font-weight: 600;
+}
+
+.lista-farmacos {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.farmaco-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border-left: 5px solid #1e88e5;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.farmaco-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.nome-farmaco {
+  margin: 0 0 16px 0;
+  color: #1565c0;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.lotes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lote-item-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: #f5faff;
+  border-radius: 8px;
+  font-size: 1.05em;
+}
+
+.lote-item-obs {
+  margin-top: 20px;
+  padding: 12px 16px;
+  border-top: 2px solid #aaa;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.lote-item {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5faff;
+  font-size: 1.05em;
+}
+
+.lote-item span {
+  font-weight: 500;
+}
+
+/* Destaques por status */
+.vencimento-proximo {
+  background-color: #fff8e1 !important;
+  border-left: 4px solid #ffb300;
+}
+
+.vencido {
+  background-color: #ffebee !important;
+  border-left: 4px solid #e53935;
+}
+
+.estoque-baixo {
+  color: #ff8f00;
+  font-weight: 700;
+}
+
+.estoque-critico {
+  color: #d32f2f;
+  font-weight: 700;
+}
+
+.desligado {
+  background-color: #ccc !important;
+  border-left: 4px solid #555;
+}
+
+.estoque-desligado {
+  color: #777;
+  font-weight: 700;
+}
+
+.estoque-alto {
+  color: #43a047;
+  font-weight: 600;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .lote-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .lista-farmacos {
+    padding: 10px;
+  }
+
+  .nome-farmaco {
+    font-size: 1.4em;
+  }
+}

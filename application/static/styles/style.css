@@ -1,55 +1,119 @@
-:root{
-    --fundo:45deg, rgb(250, 255, 250), white;
-    --white:#fff;
-    --radius: 10px;
-    --shadow: 0 5px 15px rgba(0,0,0,0.5)
+:root {
+  --fundo: 45deg, rgb(250, 255, 250), white;
+  --white: #fff;
+  --radius: 10px;
+  --shadow: 0 5px 15px rgba(0, 0, 0, 0.5)
 }
 
-.none{
-    display: none;
+.none {
+  display: none;
 }
 
-body{
-    min-height: 100vh;
-    background:linear-gradient(var(--fundo));
-    width: 100%;
-    display: flex;
+body {
+  min-height: 100vh;
+  background: linear-gradient(var(--fundo));
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, rgba(212, 255, 251, 0.1), rgba(0, 255, 191, 0.05));
+}
+
+header {
+  height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  box-shadow: -5px 0 15px rgba(78, 200, 115, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(0, 0, 63);
+  transition: 0.3s;
+}
+header h1{
+  flex: 3;
+  padding: 0 50px;
+}
+main {
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+footer {
+  text-align: center;
+  background-color: var(--white);
+  padding: 5px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+nav{
+  margin: 0 20px;
+}
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  /* ou 'flex-start' se quiser alinhado à esquerda */
+  align-items: center;
+  height: 70px;
+}
+
+nav li {
+  margin: 0 3px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 1.1em;
+  padding: 6px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Efeito hover bonito */
+nav a:hover {
+  background-color: rgba(30,206,229,0.5);
+  color: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(30, 136, 229, 0.3);
+}
+
+/* Indicador da página atual */
+nav a.active {
+  background-color: #1ecee5;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Responsividade para mobile */
+@media (max-width: 768px) {
+  nav ul {
+    height: auto;
     flex-direction: column;
-    background: linear-gradient(180deg, rgba(212, 255, 251,0.1), rgba(0, 255, 191, 0.05));
-}
+    padding: 15px 0;
+  }
 
-header{
-    height: 50px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
-    box-shadow: -5px 0 15px rgba(78,200,115,0.5);
-    background-color: rgba(255, 255, 255,0.5);
-    backdrop-filter: blur(8px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgb(0, 0, 63);
-    transition: 0.3s;
-}
-main{
-    flex: 3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow-x: hidden;
-}
-footer{
-    text-align: center;
-    background-color: var(--white);
-    padding: 5px;
-    font-weight: bold;
-    transition: 0.3s;
-}
+  nav li {
+    margin: 8px 0;
+  }
 
-.container{
+  header {
+    padding: 0;
+  }
+}
+  .container {
     margin-top: 50px;
     background-color: var(--white);
     border-radius: var(--radius);
@@ -60,21 +124,15 @@ footer{
     padding: 20px;
     overflow-y: auto;
     transition: 1s;
-}
+  }
 
-@media only screen and (max-width:768px) {
+  @media only screen and (max-width:768px) {}
 
-}
+  @media only screen and (min-width:768px) {}
 
-@media only screen and (min-width:768px) {
+  @media only screen and (min-width:1024px) {}
 
-}
-
-@media only screen and (min-width:1024px) {
-
-}
-
-.load{
+  .load {
     position: fixed;
     top: 0;
     left: 0;
@@ -84,12 +142,12 @@ footer{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(255, 255, 255,0.6);
+    background-color: rgba(255, 255, 255, 0.6);
     animation: pulse 2s ease-in-out infinite;
     display: none;
-}
+  }
 
-.resultado{
+  .resultado {
     position: fixed;
     top: 0;
     left: 0;
@@ -99,172 +157,188 @@ footer{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(255, 255, 255,0.2);
+    background-color: rgba(255, 255, 255, 0.2);
     display: none;
     animation: pulse2 0.5s ease-in-out forwards 1s;
-}
-
-@keyframes pulse {
-  0% {
-    background-color: rgba(255, 255, 255,0.6);
-  }
-  50% {
-     background-color: rgba(255, 255, 255,0.9);
-  }
-  100% {
-     background-color: rgba(255, 255, 255,0.6);
-  }
-}
-
-/* From Uiverse.io by satyamchaudharydev */ 
-.spinner {
- --clr: rgb(0, 113, 128);
- --gap: 6px;
-   /* gap between each circle */
- width: 100px;
- height: 100px;
- display: flex;
- justify-content: center;
- align-items: center;
- gap: var(--gap);
-}
-
-.spinner span {
- width: 20px;
- height: 20px;
- border-radius: 100%;
- background-color: var(--clr);
- opacity: 0;
-}
-
-.spinner span:nth-child(1) {
- animation: fade 1s ease-in-out infinite;
-}
-
-.spinner span:nth-child(2) {
- animation: fade 1s ease-in-out 0.33s infinite;
-}
-
-.spinner span:nth-child(3) {
- animation: fade 1s ease-in-out 0.66s infinite;
-}
-
-@keyframes fade {
- 0%, 100% {
-  opacity: 1;
- }
-
- 60% {
-  opacity: 0;
- }
-}
-
-/* From Uiverse.io by mobinkakei */ 
-.toggler {
-  width: 72px;
-  margin: 40px auto;
-}
-
-.toggler input {
-  display: none;
-}
-
-.toggler label {
-  display: block;
-  position: relative;
-  width: 0;
-  height: 0;
-  border: 1px solid #d6d6d6;
-  border-radius: 36px;
-  background: #e4e8e8;
-  cursor: pointer;
-}
-
-.toggler label::after {
-  display: block;
-  border-radius: 100%;
-  background-color: #d7062a;
-  content: '';
-  animation-name: toggler-size;
-  animation-duration: 0.15s;
-  animation-timing-function: ease-out;
-  animation-direction: forwards;
-  animation-iteration-count: 1;
-  animation-play-state: running;
-}
-
-.toggler label::after, .toggler label .toggler-on, .toggler label .toggler-off {
-  position: absolute;
-  top: 50%;
-  left: 25%;
-  width: 150px;
-  height: 150px;
-  transform: translateY(-50%) translateX(-50%);
-  transition: left 0.15s ease-in-out, background-color 0.2s ease-out, width 0.15s ease-in-out, height 0.15s ease-in-out, opacity 0.15s ease-in-out;
-  /* animation: pulse2 2s ease-in-out infinite; */
-}
-
-.toggler input:checked + label::after, .toggler input:checked + label .toggler-on, .toggler input:checked + label .toggler-off {
-  left: 75%;
-}
-
-.toggler input:checked + label::after {
-  background-color: #50ac5d;
-  animation-name: toggler-size2;
-}
-
-.toggler .toggler-on, .toggler .toggler-off {
-  opacity: 1;
-  z-index: 2;
-}
-
-.toggler input:checked + label .toggler-off, .toggler input:not(:checked) + label .toggler-on {
-  width: 0;
-  height: 0;
-  opacity: 0;
-}
-
-.toggler .path {
-  fill: none;
-  stroke: #fefefe;
-  stroke-width: 7px;
-  stroke-linecap: round;
-  stroke-miterlimit: 10;
-}
-
-@keyframes toggler-size {
-  0%, 100% {
-    width: 26px;
-    height: 26px;
   }
 
-  50% {
+  @keyframes pulse {
+    0% {
+      background-color: rgba(255, 255, 255, 0.6);
+    }
+
+    50% {
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    100% {
+      background-color: rgba(255, 255, 255, 0.6);
+    }
+  }
+
+  /* From Uiverse.io by satyamchaudharydev */
+  .spinner {
+    --clr: rgb(0, 113, 128);
+    --gap: 6px;
+    /* gap between each circle */
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap);
+  }
+
+  .spinner span {
     width: 20px;
     height: 20px;
-  }
-}
-
-@keyframes toggler-size2 {
-  0%, 100% {
-    width: 26px;
-    height: 26px;
-  }
-
-  50% {
-    width: 20px;
-    height: 20px;
-  }
-}
-
-@keyframes pulse2 {
-  0% {
-    opacity: 1;
-  }
-  50% {
+    border-radius: 100%;
+    background-color: var(--clr);
     opacity: 0;
+  }
+
+  .spinner span:nth-child(1) {
+    animation: fade 1s ease-in-out infinite;
+  }
+
+  .spinner span:nth-child(2) {
+    animation: fade 1s ease-in-out 0.33s infinite;
+  }
+
+  .spinner span:nth-child(3) {
+    animation: fade 1s ease-in-out 0.66s infinite;
+  }
+
+  @keyframes fade {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    60% {
+      opacity: 0;
+    }
+  }
+
+  /* From Uiverse.io by mobinkakei */
+  .toggler {
+    width: 72px;
+    margin: 40px auto;
+  }
+
+  .toggler input {
     display: none;
   }
-  100% {
-    display: none;
+
+  .toggler label {
+    display: block;
+    position: relative;
+    width: 0;
+    height: 0;
+    border: 1px solid #d6d6d6;
+    border-radius: 36px;
+    background: #e4e8e8;
+    cursor: pointer;
   }
-}
+
+  .toggler label::after {
+    display: block;
+    border-radius: 100%;
+    background-color: #d7062a;
+    content: '';
+    animation-name: toggler-size;
+    animation-duration: 0.15s;
+    animation-timing-function: ease-out;
+    animation-direction: forwards;
+    animation-iteration-count: 1;
+    animation-play-state: running;
+  }
+
+  .toggler label::after,
+  .toggler label .toggler-on,
+  .toggler label .toggler-off {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    width: 150px;
+    height: 150px;
+    transform: translateY(-50%) translateX(-50%);
+    transition: left 0.15s ease-in-out, background-color 0.2s ease-out, width 0.15s ease-in-out, height 0.15s ease-in-out, opacity 0.15s ease-in-out;
+    /* animation: pulse2 2s ease-in-out infinite; */
+  }
+
+  .toggler input:checked+label::after,
+  .toggler input:checked+label .toggler-on,
+  .toggler input:checked+label .toggler-off {
+    left: 75%;
+  }
+
+  .toggler input:checked+label::after {
+    background-color: #50ac5d;
+    animation-name: toggler-size2;
+  }
+
+  .toggler .toggler-on,
+  .toggler .toggler-off {
+    opacity: 1;
+    z-index: 2;
+  }
+
+  .toggler input:checked+label .toggler-off,
+  .toggler input:not(:checked)+label .toggler-on {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  .toggler .path {
+    fill: none;
+    stroke: #fefefe;
+    stroke-width: 7px;
+    stroke-linecap: round;
+    stroke-miterlimit: 10;
+  }
+
+  @keyframes toggler-size {
+
+    0%,
+    100% {
+      width: 26px;
+      height: 26px;
+    }
+
+    50% {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  @keyframes toggler-size2 {
+
+    0%,
+    100% {
+      width: 26px;
+      height: 26px;
+    }
+
+    50% {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  @keyframes pulse2 {
+    0% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0;
+      display: none;
+    }
+
+    100% {
+      display: none;
+    }
+  }

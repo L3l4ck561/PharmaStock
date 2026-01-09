@@ -241,7 +241,7 @@ async function atualizarDados() {
 }
 
 //iniciando sistema
-// setInterval(atualizarDados, 2000);
+//setInterval(atualizarDados, 2000);
 atualizarDados();
 
 const boxcheck = document.getElementById('check')
