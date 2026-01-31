@@ -14,7 +14,6 @@ const actionValue = document.getElementById('actionValue')
 const infoBox = document.getElementsByClassName('info-box')[0]
 const obs = document.getElementById('print-obs')
 
-
 inputText[7].value = new Date().toISOString().split('T')[0]
 
 // Processa o texto quando o botão é clicado
@@ -27,7 +26,9 @@ processBtn.addEventListener('click', () => {
             vetor.push(i)
         }
     })
-    let input = ["Nome do Fármaco","Tipo", "Quantidade", "Lote", "Unidade", "Fornecedor", "Validade","Recebido"]
+ 
+    let input = ["Nome do Fármaco","alerta de baixa no estoq. (Quantidade)", "Quantidade", "Lote", "Unidade", "Fornecedor", "Validade","Recebido"]
+    
     if (vetor.length) {
         let vazio = vetor.map(i => { return input[i] })
         resultDivError.textContent = `Por favor, preencha os campos corretamente: ${vazio}.`;
@@ -35,17 +36,22 @@ processBtn.addEventListener('click', () => {
         saveBtn.style.display = 'none'
         return
     }
+
     resultDiv.style.display = 'block'
     saveBtn.style.display = 'block'
     resultDivError.textContent = '';
 
-    printResult.forEach((item, i) => {
-        item.innerHTML = inputText[i].value
-    })
+    printResult[0].textContent = inputText[0].value
+    printResult[1].textContent = inputText[2].value
+    printResult[2].textContent = inputText[3].value
+    printResult[3].textContent = inputText[4].value
+    printResult[4].textContent = inputText[5].value
+    printResult[5].textContent = inputText[6].value
+
     actionValue.innerHTML = actionSelect.value
     if (inputText[8].value.trim()) {
         infoBox.style.display = 'block'
-        obs.innerHTML = inputText[7].value
+        obs.innerHTML = inputText[8].value
     } else {
         infoBox.style.display = 'none'
     };

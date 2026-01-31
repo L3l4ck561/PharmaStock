@@ -251,6 +251,8 @@ ul.lista li:hover {
   color: #1565c0;
   font-size: 1.5em;
   font-weight: 600;
+  display: flex;
+  align-items: center;
 }
 
 .lotes {
@@ -282,7 +284,7 @@ ul.lista li:hover {
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  background-color: #f5faff;
+  background-color: transparent;
   font-size: 1.05em;
 }
 
@@ -290,6 +292,11 @@ ul.lista li:hover {
   font-weight: 500;
 }
 
+.boxCor{
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
+}
 /* Destaques por status */
 .vencimento-proximo {
   background-color: #fff8e1 !important;

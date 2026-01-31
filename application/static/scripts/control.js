@@ -525,8 +525,8 @@ function pedidoCard() {
                                 <div class="corP" style='background-color:${pharma[1]}';></div>
                                 <div>
                                     <span>${pharma[2]}</span>
-                                    <p>Extra Spicy</p>
-                                    <p>No mayo</p>
+                                    <p>---</p>
+                                    <p>---</p>
                                 </div>
                                 <div class="quantity">
                                 <div style="display: flex;align-items: center;justify-content: center;">
@@ -545,22 +545,12 @@ function pedidoCard() {
 
                     <div class="card checkout">
                         <label class="title">Lotes</label>
-                        <div class="details" id='${pharma[0]}'>
-                            <span>L001 | 20/05/2025</span>
-                            <span>5</span>
-                        </div>
+                        <div class="details" id='pID${pharma[0]}'></div>
                     </div>
 
                     <div class="card checkout">
                         <label class="title">Usados</label>
-                        <div class="details" id='${pharma[1]}'>
-                            <span>Segunda:</span>
-                            <span>5</span>
-                            <span>Terça:</span>
-                            <span>3</span>
-                            <span>Quinta:</span>
-                            <span>2</span>
-                        </div>
+                        <div class="details" id='pID2${pharma[0]}'></div>
                         <div class="checkout--footer">
                             <label class="price"><sup>SUB Total</sup> ${disponivel - usados}</label>
                         <button class="Btn" onclick='cardItem(${pharma[0]})' type="button">
@@ -588,12 +578,13 @@ function pedidoCard() {
 
             let usadoL = e.lote.map(l => [l[0][0], l[1]])
 
-            const itensLote = document.getElementById(`${pharma[0]}`)
+            const itensLote = document.getElementById(`pID${pharma[0]}`)
             itensLote.innerHTML = ''
             stock.forEach(s => { if (usadoL.find(e => e[0] === s[3])[1] != 0) { itensLote.innerHTML += `<span>${s[0]} | ${s[2]}</span><span>${usadoL.find(e => e[0] === s[3])[1]} / ${s[1]}</span>` } })
-            const itensSemana = document.getElementById(`${pharma[1]}`)
+            const itensSemana = document.getElementById(`pID2${pharma[0]}`)
             itensSemana.innerHTML = ''
-
+            
+            console.log(diasSemana,e.semana)
             diasSemana.forEach((dia, i) => { if (e.semana[i] != 0) { itensSemana.innerHTML += `<span>${dia}</span><span>${e.semana[i]}</span>` } })
         });
     }
